@@ -44,7 +44,14 @@ let redisSet = (key, val) => {
     return redisclient.set(key, val).then(res => resolve(res)).catch(err => reject(err))
   })
 }
-router.post('/img', async (ctx) => {
+const config = {
+  plant: 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant',
+  animal: 'https://aip.baidubce.com/rest/2.0/image-classify/v1/animal',
+  dish: 'https://aip.baidubce.com/rest/2.0/image-classify/v2/dish',
+  car: 'https://aip.baidubce.com/rest/2.0/image-classify/v1/car',
+  general: 'https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general'
+}
+router.post('/getRes', async (ctx) => {
   const date = new Date()
   let access_token = await redisGet('access_token')
   let access_date = await redisGet('access_date')
@@ -58,8 +65,9 @@ router.post('/img', async (ctx) => {
     access_token = access_tok
     access_date = access_da
   }
-  const url = 'https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general'
   const fileimg = ctx.request.body.fileimg
+  const type = ctx.request.body.type
+  const url = config[type]
   const res = await post(url, {
     access_token: access_token,
     image: fileimg,

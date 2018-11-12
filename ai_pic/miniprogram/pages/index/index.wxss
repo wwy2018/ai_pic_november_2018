@@ -1,6 +1,7 @@
 /**index.wxss**/
 
 page {
+  height: 100%;
   background: #f6f6f6;
   display: flex;
   flex-direction: column;
@@ -45,35 +46,33 @@ page {
   border: none;
 }
 
-.uploader, .tunnel {
-  height: auto;
+.uploader {
+  height: 100%;
   /* padding: 0 0 0 40rpx; */
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
+  justify-content: space-around;
 }
 
-.uploader-text, .tunnel-text {
+.uploader-text{
   width: 100%;
-  line-height: 52px;
-  font-size: 50rpx;
+  line-height: 80px;
+  font-size: 40rpx;
   color: #007aff;
   text-align:center;
-
+  flex-grow: 0;
 }
 
 .uploader-container {
   width: 100%;
   height: 400rpx;
-  /* padding: 20rpx 20rpx 20rpx 0; */
   display: flex;
   align-content: center;
   justify-content: center;
   box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
   align-items: center;
 }
-
 .uploader-image {
   width: 100%;
   height: 360rpx;
@@ -140,11 +139,49 @@ page {
 }
 .res-container{
   padding: 30rpx;
+  position:fixed;
+  width:100%;
+  background:yellow;
+  top:0;
+  height:100%;
+  box-sizing: border-box;
+  background: #007AFF;
+  overflow-y: scroll;
+  color: #fff;
+}
+.res-close{
+  text-decoration: underline;
+  text-align: right;
 }
 .res-title{
   font-weight: bold;
   line-height: 50rpx;
+  text-align: center;
 }
 .baike-container{
   margin-top: 30rpx;
+}
+.b-con{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 50rpx auto;
+}
+.btn{
+  width: 40%;
+  height: 100rpx;
+  background: #FF2D55;
+  border-radius: 10rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 10rpx;
+  font-size: 40rpx;
+}
+.con{
+  width:100%;
+  flex-grow:1;
+  flex-direction: column;
+  display: flex;
 }

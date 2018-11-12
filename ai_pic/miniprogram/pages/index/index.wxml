@@ -2,19 +2,33 @@
 <view class="container">
   <!-- 上传图片 -->
   <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
+    <view class="uploader-text">
+      <text>点击按钮 上传对应类别图片</text>
     </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    <view class="con">
+      <view class="b-con">
+        <view class="btn" bindtap="getRes" data-type="plant">植物</view>
+        <view class="btn" bindtap="getRes" data-type="animal">动物</view>
+      </view>
+      <view class="b-con">
+        <view class="btn" bindtap="getRes" data-type="dish">菜品</view>
+        <view class="btn" bindtap="getRes" data-type="car">车型</view>
+      </view>
+      <view class="b-con">
+        <view class="btn" bindtap="getRes" data-type="general">一般图片</view>
+        <view class="btn" style="visibility: hidden;"></view>
+      </view>
     </view>
-    <view class="res-container" wx:if="{{result}}">
-      <view class="res-title">可能结果及概率如下：</view>
-      <view wx:for="{{result}}" wx:key="index">
-        {{item.keyword}}（{{item.score}}%）
+    <view class="res-container" wx:if="{{resShow}}">
+      <view class="res-close" bindtap="closeRes">关闭</view>
+      <view class="uploader-container" wx:if="{{imgUrl}}">
+        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      </view>
+      <view class="res-title">
+        {{result.name}}
       </view>
       <view class="baike-container">
-        {{result[0]['baike_info']['description']}}
+        {{result['baike_info']['description']}}
       </view>
     </view>
   </view>
